@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-10">
+    <div class="p-8">
+        <div class="text-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-800">Create an Account</h2>
+            <p class="text-gray-600">Join our attendance monitoring system</p>
+        </div>
+        
+        <form method="POST" action="{{ url_for('register') }}" class="space-y-4">
+            {{ form.hidden_tag() }}
+            
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                    Username
+                </label>
+                {{ form.username(class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500") }}
+            </div>
+            
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                    Email Address
+                </label>
+                {{ form.email(class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500") }}
+            </div>
+            
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                    Password
+                </label>
+                {{ form.password(class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500") }}
+            </div>
+            
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm_password">
+                    Confirm Password
+                </label>
+                {{ form.confirm_password(class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500") }}
+            </div>
+            
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="role">
+                    Account Type
+                </label>
+                {{ form.role(class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500") }}
+            </div>
+            
+            <div id="year-field" class="hidden">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="year">
+                    Year (1-4)
+                </label>
+                {{ form.year(class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500") }}
+            </div>
+            
+            <div>
+                {{ form.submit(class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline") }}
+            </div>
+        </form>
+        
+        <div class="mt-4 text-center">
+            <p class="text-gray-600">Already have an account? 
+                <a href="{{ url_for('login') }}" class="text-blue-600 hover:text-blue-800">Login</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+{% block scripts %}
+<script>
+document.getElementById('role').addEventListener('change', function() {
+    const yearField = document.getElementById('year-field');
+    if (this.value === 'student') {
+        yearField.classList.remove('hidden');
+    } else {
+        yearField.classList.add('hidden');
+    }
+});
+</script>
+{% endblock %}
+{% endblock %}
