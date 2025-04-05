@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Attendance Monitoring System{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <div>
+            <img class="mx-auto h-24 w-auto" src="https://via.placeholder.com/150" alt="Logo">
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                Attendance Monitoring System
+            </h2>
+            <p class="mt-2 text-center text-sm text-gray-600">
+                A modern solution for tracking student attendance using QR codes
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 gap-4 mt-8">
+            <a href="{{ url_for('login') }}" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                    <i class="fas fa-sign-in-alt"></i>
+                </span>
+                Sign in to your account
+            </a>
+            
+            <a href="{{ url_for('register') }}" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                    <i class="fas fa-user-plus"></i>
+                </span>
+                Register new account
+            </a>
+        </div>
+        
+        <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">System Features</h3>
+            <ul class="space-y-3">
+                <li class="flex items-start">
+                    <div class="flex-shrink-0 h-5 w-5 text-green-500">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <p class="ml-3 text-sm text-gray-700">QR code based attendance tracking</p>
+                </li>
+                <li class="flex items-start">
+                    <div class="flex-shrink-0 h-5 w-5 text-green-500">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <p class="ml-3 text-sm text-gray-700">Photo proof for attendance verification</p>
+                </li>
+                <li class="flex items-start">
+                    <div class="flex-shrink-0 h-5 w-5 text-green-500">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <p class="ml-3 text-sm text-gray-700">Role-based dashboards (Admin/Instructor/Student)</p>
+                </li>
+                <li class="flex items-start">
+                    <div class="flex-shrink-0 h-5 w-5 text-green-500">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <p class="ml-3 text-sm text-gray-700">Real-time attendance reports</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
