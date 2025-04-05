@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">Student Dashboard</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <!-- Stats Cards -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-center">
+                <div class="p-3 rounded-full bg-blue-100 text-blue-600 mr-4">
+                    <i class="fas fa-calendar-check text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-gray-500 text-sm font-medium">Attended Lectures</h3>
+                    <p class="text-2xl font-bold">24</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-center">
+                <div class="p-3 rounded-full bg-green-100 text-green-600 mr-4">
+                    <i class="fas fa-percentage text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-gray-500 text-sm font-medium">Attendance Rate</h3>
+                    <p class="text-2xl font-bold">92%</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-center">
+                <div class="p-3 rounded-full bg-purple-100 text-purple-600 mr-4">
+                    <i class="fas fa-book text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-gray-500 text-sm font-medium">Current Year</h3>
+                    <p class="text-2xl font-bold">Year {{ current_user.year }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+        <div class="p-4 border-b border-gray-200">
+            <h2 class="text-xl font-semibold text-gray-800">Today's Lectures</h2>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subject</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Instructor</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <!-- Sample lecture row -->
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm font-medium text-gray-900">Advanced Python</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm text-gray-900">10:00 AM - 12:00 PM</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm text-gray-900">Dr. Smith</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                Pending
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <button class="text-blue-600 hover:text-blue-900">
+                                <i class="fas fa-qrcode mr-1"></i> Mark Attendance
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="p-4 border-b border-gray-200">
+                <h2 class="text-xl font-semibold text-gray-800">Attendance History</h2>
+            </div>
+            <div class="p-4">
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-800 mb-2">Recent Lectures</h3>
+                    <ul class="space-y-2">
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-700">Web Development - May 10</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Present</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-700">Database Design - May 8</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Present</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-700">Algorithms - May 5</span>
+                            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">Absent</span>
+                        </li>
+                    </ul>
+                </div>
+                <a href="#" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                    <i class="fas fa-history mr-1"></i> View Full History
+                </a>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="p-4 border-b border-gray-200">
+                <h2 class="text-xl font-semibold text-gray-800">QR Scanner</h2>
+            </div>
+            <div class="p-4">
+                <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center mb-4">
+                    <i class="fas fa-qrcode text-4xl text-gray-400 mb-2"></i>
+                    <p class="text-gray-500">Scan QR code to mark attendance</p>
+                </div>
+                <button id="start-scanner" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
+                    <i class="fas fa-camera mr-2"></i> Open Scanner
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block scripts %}
+<script>
+document.getElementById('start-scanner').addEventListener('click', function() {
+    // QR scanner implementation would go here
+    alert('QR scanner would open here in a real implementation');
+});
+</script>
+{% endblock %}
+{% endblock %}
